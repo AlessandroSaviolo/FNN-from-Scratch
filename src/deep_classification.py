@@ -4,11 +4,11 @@ from utilities import load_dataset, plot_learning_curve, plot_latent_features_2D
 
 
 def preprocessing():
-	df = load_dataset('ionosphere_csv.csv')									# load data
+	df = load_dataset('ionosphere_csv.csv')						# load data
 	X = (df.drop(['class'], 1))
-	X = (X - X.min()) / (X.max() - X.min())  									# standardize data
+	X = (X - X.min()) / (X.max() - X.min())  					# standardize data
 	X = X.replace(np.NaN, 0)
-	y = df['class'].transform(lambda x: 1 if x is 'g' else 0)					# one hot encode target
+	y = df['class'].transform(lambda x: 1 if x is 'g' else 0)			# one hot encode target
 	return X, y
 
 
@@ -24,7 +24,7 @@ def relu(x):																	# activation function
 	return max(0, x)
 
 
-def relu_derivative(x):															# activation function derivative
+def relu_derivative(x):									# activation function derivative
 	return 1 if x > 0 else 0
 
 
@@ -32,11 +32,11 @@ def sigmoid(x):																	# activation function
 	return 1 / (1 + np.exp(-x))
 
 
-def sigmoid_derivative(x):														# activation function derivative
+def sigmoid_derivative(x):								# activation function derivative
 	return sigmoid(x) * (1 - sigmoid(x))
 
 
-def cross_entropy(predictions, targets):										# loss function
+def cross_entropy(predictions, targets):						# loss function
 	return np.sum([-targets[i] * np.log(predictions[i]) - (1 - targets[i]) * np.log(1 - predictions[i]) for i in range(predictions.shape[0])])
 
 
@@ -57,8 +57,8 @@ class Classifier:
 	def classify(self, X_train, y_train, learning_rate, num_epochs, verbose):
 
 		# forward propagation
-		hidden_layer_1 = self.relu(np.dot(X_train, self.weights_0))				# relu as activation function
-		hidden_layer_2 = self.relu(np.dot(hidden_layer_1, self.weights_1))			# relu as activation function
+		hidden_layer_1 = self.relu(np.dot(X_train, self.weights_0))			# relu as activation function
+		hidden_layer_2 = self.relu(np.dot(hidden_layer_1, self.weights_1))		# relu as activation function
 		hidden_layer_3 = self.relu(np.dot(hidden_layer_2, self.weights_2))  		# relu as activation function
 		output_layer = self.sigmoid(np.dot(hidden_layer_3, self.weights_3))		# sigmoid as activation function
 
@@ -78,7 +78,7 @@ class Classifier:
 			for p in range(output_layer.shape[0]):
 
 				# backward propagation
-				output_error = output_layer[p] - y_train[p] 							# error in output
+				output_error = output_layer[p] - y_train[p] 				# error in output
 				output_delta = output_error * sigmoid_derivative(output_layer[p])  	# applying derivative of sigmoid to error
 
 				hidden_3_delta = np.zeros(len(self.weights_2[0]))  			# how much 3rd hidden layer weights contributed to output error
@@ -109,7 +109,7 @@ class Classifier:
 						self.weights_0[i][j] -= learning_rate * hidden_1_delta[j] * X_train[j][i]
 
 			# forward propagation: update predictions
-			hidden_layer_1 = self.relu(np.dot(X_train, self.weights_0))  				# relu as activation function
+			hidden_layer_1 = self.relu(np.dot(X_train, self.weights_0))  			# relu as activation function
 			hidden_layer_2 = self.relu(np.dot(hidden_layer_1, self.weights_1))  		# relu as activation function
 			hidden_layer_3 = self.relu(np.dot(hidden_layer_2, self.weights_2))  		# relu as activation function
 			output_layer = self.sigmoid(np.dot(hidden_layer_3, self.weights_3))  		# sigmoid as activation function
