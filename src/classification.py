@@ -5,11 +5,11 @@ from model import Classifier, compute_accuracy
 
 
 def preprocessing():
-	df = load_dataset('ionosphere_csv.csv')									# load data
+	df = load_dataset('ionosphere_csv.csv')						# load data
 	X = (df.drop(['class'], 1))
-	X = (X - X.min()) / (X.max() - X.min())  									# standardize data
+	X = (X - X.min()) / (X.max() - X.min())  					# standardize data
 	X = X.replace(np.NaN, 0)
-	y = df['class'].transform(lambda x: 1 if x is 'g' else 0)					# one hot encode target
+	y = df['class'].transform(lambda x: 1 if x is 'g' else 0)			# one hot encode target
 	return X, y
 
 
