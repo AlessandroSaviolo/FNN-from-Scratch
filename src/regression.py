@@ -16,7 +16,7 @@ def one_hot_encode(df, categorical_columns, categories):				# one-hot encode cat
 	return pd.get_dummies(df, categorical_columns)
 
 
-def correlation_selector(X, y):											# compute the correlation with y for each feature
+def correlation_selector(X, y):								# compute the correlation with y for each feature
 	correlation = []
 	for i in X.columns.tolist():
 		cor = np.corrcoef(X[i], y)[0, 1]
@@ -28,11 +28,11 @@ def preprocessing():
 	categorical_columns = ['Orientation', 'Glazing Area Distribution']
 	categories = {1: 'uniform', 2: 'north', 3: 'east', 4: 'south', 5: 'west'}
 	target = 'Heating Load'
-	df = load_dataset('EnergyEfficiency_data.csv')						# load data
+	df = load_dataset('EnergyEfficiency_data.csv')					# load data
 	df = one_hot_encode(df, categorical_columns, categories)			# one hot encode categorical columns
 	df = df.drop('Glazing Area Distribution_0', 1)
-	df = (df - df.min()) / (df.max() - df.min())						# standardize data
-	X = df.drop(target, 1)												# split data into training and test
+	df = (df - df.min()) / (df.max() - df.min())					# standardize data
+	X = df.drop(target, 1)								# split data into training and test
 	y = df[target]
 	return X, y
 
