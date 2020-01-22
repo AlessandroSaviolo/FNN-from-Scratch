@@ -1,14 +1,18 @@
-# DeepLearning_0845086_HW1
+# Feedforward Neural Network from Scratch
 
-The purpose of this document is to present and analyze the neural network models built from scratch for Homework 1. Furthermore, the results produced by such networks on different datasets are illustrated.
+This project is part of a series of projects for the course _Deep Learning_ that I attended during my exchange program at National Chiao Tung University (Taiwan). See `task.pdf` for the details of the assignment.
+
+The purpose of this project is to implement a Feedforward Neural Network from scratch. The network is implemented for both regression and classification tasks.
 
 The first model analyzed is the neural network for regression. The model architecture consists of four layers. The two hidden layers are used to obtain better performances, at the cost of more computational time. It uses the ReLU activation function for all layers except for the output layer (no activation function there). The neural network uses Gradient Descent in order to reduce the loss function which is the Mean Squared Error.
 
 The second model analyzed is the neural network for classification. The model architecture consists of 3 layers. This choice is related to the complexity of the dataset. It uses the ReLU activation function for all layers except for the output layer which uses the Sigmoid. The neural network uses Gradient Descent in order to reduce the loss function which is the Cross-Entropy.
 
-The code is organized as follows:
+## 1. Dataset
 
--> main.py : main function, use it to change task ('r' or 'c') and hyperparameters (i.e., learning rate, number of epochs)
+## 2. Code Structure
+
+-> `main.py` : main function, use it to change task ('r' or 'c') and hyperparameters (i.e., learning rate, number of epochs)
 
 -> model.py : contains the regression and classification neural network models
 
