@@ -14,7 +14,7 @@ The second model analyzed is the neural network for classification. The model ar
 
 - [Ionosphere (classification)](https://drive.google.com/open?id=1YqOs39iYhChHuNVq0rmbAscAQ-xr1_y_)
 
-## 2. Code Structure
+## 2. Project Structure
 
 - `main.py` : main function, use it to change task ('r' or 'c') and hyperparameters (i.e., learning rate, number of epochs)
 
