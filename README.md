@@ -1,6 +1,6 @@
 # Feedforward Neural Network from Scratch
 
-This project is part of a series of projects for the course _Deep Learning_ that I attended during my exchange program at National Chiao Tung University (Taiwan). See `task.pdf` for the details of the assignment.
+This project is part of a series of projects for the course _Deep Learning_ that I attended during my exchange program at National Chiao Tung University (Taiwan). See `task.pdf` for the details of the assignment. See `report.pdf` for the report containing the representation and the analysis of the produced results.
 
 The purpose of this project is to implement a Feedforward Neural Network from scratch. The network is implemented for both regression and classification tasks.
 
